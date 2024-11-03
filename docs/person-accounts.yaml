@@ -1,0 +1,272 @@
+openapi: 3.0.0
+info:
+  title: Person Accounts API
+  version: 1.0.0
+  description: API for managing person accounts.
+tags:
+  - name: Person Accounts
+    description: Operations related to person accounts
+paths:
+  /person-accounts:
+    post:
+      tags:
+        - Person Accounts
+      summary: Create a new person account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                person_id:
+                  type: integer
+                  example: 1
+                account_id:
+                  type: integer
+                  example: 1
+                role:
+                  type: string
+                  enum: [Owner, Advisor]
+                  example: "Owner"
+                role_percentage:
+                  type: number
+                  format: float
+                  example: 100.00
+      responses:
+        '201':
+          description: Person account created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  person_id:
+                    type: integer
+                    example: 1
+                  account_id:
+                    type: integer
+                    example: 1
+                  role:
+                    type: string
+                    example: "Owner"
+                  role_percentage:
+                    type: number
+                    format: float
+                    example: 100.00
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Person ID is required"
+
+    get:
+      tags:
+        - Person Accounts
+      summary: Retrieve all person accounts
+      responses:
+        '200':
+          description: A list of person accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    person_id:
+                      type: integer
+                      example: 1
+                    account_id:
+                      type: integer
+                      example: 1
+                    role:
+                      type: string
+                      example: "Owner"
+                    role_percentage:
+                      type: number
+                      format: float
+                      example: 100.00
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"
+
+  /person-accounts/{id}:
+    get:
+      tags:
+        - Person Accounts
+      summary: Retrieve a specific person account by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the person account to retrieve
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Person account found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  person_id:
+                    type: integer
+                    example: 1
+                  account_id:
+                    type: integer
+                    example: 1
+                  role:
+                    type: string
+                    example: "Owner"
+                  role_percentage:
+                    type: number
+                    format: float
+                    example: 100.00
+        '404':
+          description: Person account not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Person account not found"
+
+    put:
+      tags:
+        - Person Accounts
+      summary: Update a specific person account by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the person account to update
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                person_id:
+                  type: integer
+                  example: 1
+                account_id:
+                  type: integer
+                  example: 1
+                role:
+                  type: string
+                  enum: [Owner, Advisor]
+                  example: "Owner"
+                role_percentage:
+                  type: number
+                  format: float
+                  example: 100.00
+      responses:
+        '200':
+          description: Person account updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  person_id:
+                    type: integer
+                    example: 1
+                  account_id:
+                    type: integer
+                    example: 1
+                  role:
+                    type: string
+                    example: "Owner"
+                  role_percentage:
+                    type: number
+                    format: float
+                    example: 100.00
+        '404':
+          description: Person account not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Person account not found"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Person ID is required"
+
+    delete:
+      tags:
+        - Person Accounts
+      summary: Delete a person account by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the person account to delete
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Person account deleted successfully
+        '404':
+          description: Person account not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Person account not found"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"

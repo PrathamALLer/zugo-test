@@ -1,0 +1,258 @@
+openapi: 3.0.0
+info:
+  title: Tax Rates API
+  version: 1.0.0
+  description: API for managing tax rates.
+tags:
+  - name: Tax Rates
+    description: Operations related to tax rates
+paths:
+  /tax-rates:
+    post:
+      tags:
+        - Tax Rates
+      summary: Create a new tax rate
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rate_name:
+                  type: string
+                  example: "Standard Rate"
+                percentage:
+                  type: number
+                  format: float
+                  example: 20.00
+                effective_date:
+                  type: string
+                  format: date
+                  example: "2023-01-01"
+      responses:
+        '201':
+          description: Tax rate created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  rate_name:
+                    type: string
+                    example: "Standard Rate"
+                  percentage:
+                    type: number
+                    format: float
+                    example: 20.00
+                  effective_date:
+                    type: string
+                    format: date
+                    example: "2023-01-01"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Rate name is required"
+
+    get:
+      tags:
+        - Tax Rates
+      summary: Retrieve all tax rates
+      responses:
+        '200':
+          description: A list of tax rates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    rate_name:
+                      type: string
+                      example: "Standard Rate"
+                    percentage:
+                      type: number
+                      format: float
+                      example: 20.00
+                    effective_date:
+                      type: string
+                      format: date
+                      example: "2023-01-01"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"
+
+  /tax-rates/{id}:
+    get:
+      tags:
+        - Tax Rates
+      summary: Retrieve a specific tax rate by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the tax rate to retrieve
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Tax rate found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  rate_name:
+                    type: string
+                    example: "Standard Rate"
+                  percentage:
+                    type: number
+                    format: float
+                    example: 20.00
+                  effective_date:
+                    type: string
+                    format: date
+                    example: "2023-01-01"
+        '404':
+          description: Tax rate not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "TaxRate not found"
+
+    put:
+      tags:
+        - Tax Rates
+      summary: Update a tax rate by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the tax rate to update
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rate_name:
+                  type: string
+                  example: "Standard Rate"
+                percentage:
+                  type: number
+                  format: float
+                  example: 20.00
+                effective_date:
+                  type: string
+                  format: date
+                  example: "2023-01-01"
+      responses:
+        '200':
+          description: Tax rate updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  rate_name:
+                    type: string
+                    example: "Standard Rate"
+                  percentage:
+                    type: number
+                    format: float
+                    example: 20.00
+                  effective_date:
+                    type: string
+                    format: date
+                    example: "2023-01-01"
+        '404':
+          description: Tax rate not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "TaxRate not found"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Rate name is required"
+
+    delete:
+      tags:
+        - Tax Rates
+      summary: Delete a tax rate by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the tax rate to delete
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Tax rate deleted successfully
+        '404':
+          description: Tax rate not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "TaxRate not found"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error" 

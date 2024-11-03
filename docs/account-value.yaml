@@ -1,0 +1,272 @@
+openapi: 3.0.0
+info:
+  title: Account Value API
+  version: 1.0.0
+  description: API for managing account values.
+tags:
+  - name: Account Values
+    description: Operations related to account values
+paths:
+  /account-values:
+    post:
+      tags:
+        - Account Values
+      summary: Create a new account value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bookvalue:
+                  type: number
+                  format: float
+                  example: 1000.00
+                account_id:
+                  type: integer
+                  example: 1
+                currency:
+                  type: string
+                  enum: [GBP]
+                  example: GBP
+                iscurrent:
+                  type: boolean
+                  example: true
+      responses:
+        '201':
+          description: Account value created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  bookvalue:
+                    type: number
+                    format: float
+                    example: 1000.00
+                  account_id:
+                    type: integer
+                    example: 1
+                  currency:
+                    type: string
+                    example: GBP
+                  iscurrent:
+                    type: boolean
+                    example: true
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Book value is required"
+
+    get:
+      tags:
+        - Account Values
+      summary: Retrieve all account values
+      responses:
+        '200':
+          description: A list of account values
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    bookvalue:
+                      type: number
+                      format: float
+                      example: 1000.00
+                    account_id:
+                      type: integer
+                      example: 1
+                    currency:
+                      type: string
+                      example: GBP
+                    iscurrent:
+                      type: boolean
+                      example: true
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"
+
+  /account-values/{id}:
+    get:
+      tags:
+        - Account Values
+      summary: Retrieve a specific account value by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the account value to retrieve
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Account value found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  bookvalue:
+                    type: number
+                    format: float
+                    example: 1000.00
+                  account_id:
+                    type: integer
+                    example: 1
+                  currency:
+                    type: string
+                    example: GBP
+                  iscurrent:
+                    type: boolean
+                    example: true
+        '404':
+          description: Account value not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "AccountValue not found"
+
+    put:
+      tags:
+        - Account Values
+      summary: Update an account value by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the account value to update
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bookvalue:
+                  type: number
+                  format: float
+                  example: 1000.00
+                account_id:
+                  type: integer
+                  example: 1
+                currency:
+                  type: string
+                  enum: [GBP]
+                  example: GBP
+                iscurrent:
+                  type: boolean
+                  example: true
+      responses:
+        '200':
+          description: Account value updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  bookvalue:
+                    type: number
+                    format: float
+                    example: 1000.00
+                  account_id:
+                    type: integer
+                    example: 1
+                  currency:
+                    type: string
+                    example: GBP
+                  iscurrent:
+                    type: boolean
+                    example: true
+        '404':
+          description: Account value not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "AccountValue not found"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Book value is required"
+
+    delete:
+      tags:
+        - Account Values
+      summary: Delete an account value by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the account value to delete
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Account value deleted successfully
+        '404':
+          description: Account value not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "AccountValue not found"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"

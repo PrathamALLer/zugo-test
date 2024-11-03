@@ -1,0 +1,232 @@
+openapi: 3.0.0
+info:
+  title: User API
+  version: 1.0.0
+  description: API for managing users.
+tags:
+  - name: Users
+    description: Operations related to users
+paths:
+  /users:
+    post:
+      tags:
+        - Users
+      summary: Create a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: "john_doe"
+                email:
+                  type: string
+                  example: "john@example.com"
+                password:
+                  type: string
+                  example: "securepassword"
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  username:
+                    type: string
+                  email:
+                    type: string
+        '400':
+          description: Bad request due to validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation error message"
+
+    get:
+      tags:
+        - Users
+      summary: Retrieve all users
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    username:
+                      type: string
+                      example: "john_doe"
+                    email:
+                      type: string
+                      example: "john@example.com"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error message"
+
+  /users/{id}:
+    get:
+      tags:
+        - Users
+      summary: Retrieve a specific user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the user to retrieve
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: User found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  username:
+                    type: string
+                    example: "john_doe"
+                  email:
+                    type: string
+                    example: "john@example.com"
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found"
+
+    put:
+      tags:
+        - Users
+      summary: Update a user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the user to update
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: "john_doe"
+                email:
+                  type: string
+                  example: "john@example.com"
+                password:
+                  type: string
+                  example: "newsecurepassword"
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  username:
+                    type: string
+                    example: "john_doe"
+                  email:
+                    type: string
+                    example: "john@example.com"
+        '400':
+          description: Bad request due to validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Validation error message"
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found"
+
+    delete:
+      tags:
+        - Users
+      summary: Delete a user by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the user to delete
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "User not found"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error" 

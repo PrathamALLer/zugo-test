@@ -1,0 +1,183 @@
+[
+  [
+    {
+      "id": 363751,
+      "created_at": "2024-07-20 20:28:06+0000",
+      "updated_at": "2024-09-30 15:19:02+0000",
+      "name": "account",
+      "description": "",
+      "docs": "",
+      "guid": "NU_5pSVHwN7s47VItkKUVfTlrBo",
+      "auth": true,
+      "tag": []
+    },
+    {
+      "id": 363765,
+      "created_at": "2024-07-20 20:51:53+0000",
+      "updated_at": "2024-07-20 20:59:42+0000",
+      "name": "account_value",
+      "description": "tables to cpature holdings related to an account",
+      "docs": "",
+      "guid": "rcyV3Q6XOa29qsV8cf6072RZ0uA",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 363772,
+      "created_at": "2024-07-20 21:09:04+0000",
+      "updated_at": "2024-07-28 13:00:17+0000",
+      "name": "contribution_withdrawals",
+      "description": "contributions and withdrawals",
+      "docs": "",
+      "guid": "eWp2Xe1UVjK49dLyZDbMvwjJwZc",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 363769,
+      "created_at": "2024-07-20 21:02:27+0000",
+      "updated_at": "2024-09-11 11:48:20+0000",
+      "name": "income_expense",
+      "description": "Income and Expenses",
+      "docs": "",
+      "guid": "ntXA80IwrI7vSHcFTTT6oiaHHVA",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 363758,
+      "created_at": "2024-07-20 20:39:36+0000",
+      "updated_at": "2024-07-20 20:39:46+0000",
+      "name": "model_portfolio",
+      "description": "risk profiles",
+      "docs": "",
+      "guid": "cPKcjutGz8M58A67AyYeupcNr4Q",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 363737,
+      "created_at": "2024-07-20 20:01:22+0000",
+      "updated_at": "2024-07-20 20:10:43+0000",
+      "name": "person",
+      "description": "",
+      "docs": "",
+      "guid": "vL3nSCn2wh2njnDpYwC6_6NIx6Y",
+      "auth": true,
+      "tag": []
+    },
+    {
+      "id": 363753,
+      "created_at": "2024-07-20 20:30:20+0000",
+      "updated_at": "2024-07-20 20:32:52+0000",
+      "name": "person_accounts",
+      "description": "person to account relationships",
+      "docs": "",
+      "guid": "k0Xj5NYGeCUNAxDc0CTfJGYXpws",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 363748,
+      "created_at": "2024-07-20 20:20:00+0000",
+      "updated_at": "2024-10-02 08:45:29+0000",
+      "name": "person_plan",
+      "description": "person to plan relationship",
+      "docs": "",
+      "guid": "Rv1Y0XKkoYmFqet6NV46SGQWQ68",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 363723,
+      "created_at": "2024-07-20 19:26:31+0000",
+      "updated_at": "2024-10-02 08:47:21+0000",
+      "name": "plan",
+      "description": "Client Financial Plans",
+      "docs": "",
+      "guid": "1bm5cK3D3WqTj5kxyUWUp0DJxjM",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 380648,
+      "created_at": "2024-09-17 15:51:08+0000",
+      "updated_at": "2024-09-23 15:59:24+0000",
+      "name": "Product_Tax_Wrapper_Types",
+      "description": "",
+      "docs": "",
+      "guid": "pyajcHYai-lEAfORB_dO_oUcSYA",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 366191,
+      "created_at": "2024-07-28 12:29:06+0000",
+      "updated_at": "2024-09-17 17:44:19+0000",
+      "name": "products",
+      "description": "product",
+      "docs": "",
+      "guid": "jalRpLXzRJ3yf6BGnvPNe-r1iA8",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 363757,
+      "created_at": "2024-07-20 20:38:24+0000",
+      "updated_at": "2024-07-20 20:44:01+0000",
+      "name": "risk_profile",
+      "description": "risk profiles",
+      "docs": "",
+      "guid": "z_vq-8xE6Oa8oG52k8XYcOBVtDw",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 380334,
+      "created_at": "2024-09-16 17:04:17+0000",
+      "updated_at": "2024-09-17 16:05:38+0000",
+      "name": "Settings",
+      "description": "Settings",
+      "docs": "",
+      "guid": "O32mV3RmY5uKjUwYDITY9mgIUTc",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 379111,
+      "created_at": "2024-09-12 10:06:39+0000",
+      "updated_at": "2024-09-12 10:08:30+0000",
+      "name": "TaxRates",
+      "description": "TaxRates",
+      "docs": "",
+      "guid": "ODTSeYbYcjfag-5FqMrEJrPDh0M",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 366192,
+      "created_at": "2024-07-28 12:35:48+0000",
+      "updated_at": "2024-07-28 12:56:37+0000",
+      "name": "transactions",
+      "description": "",
+      "docs": "",
+      "guid": "jfRdGgQjr2mtYnge4SItV9W6VVg",
+      "auth": false,
+      "tag": []
+    },
+    {
+      "id": 363722,
+      "created_at": "2024-07-20 19:23:26+0000",
+      "updated_at": "2024-07-20 19:45:25+0000",
+      "name": "user",
+      "description": "",
+      "docs": "",
+      "guid": "smAQIgGLtK78WbdUeU8kwcYBbwA",
+      "auth": true,
+      "tag": []
+    }
+  ],
+  1,
+  null,
+  null
+]

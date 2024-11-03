@@ -1,0 +1,262 @@
+openapi: 3.0.0
+info:
+  title: Account API
+  version: 1.0.0
+  description: API for managing accounts.
+tags:
+  - name: Accounts
+    description: Operations related to accounts
+paths:
+  /accounts:
+    post:
+      tags:
+        - Accounts
+      summary: Create a new account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                accountnumber:
+                  type: integer
+                  example: 123456
+                accounttype:
+                  type: string
+                  example: "Savings"
+                currency:
+                  type: string
+                  enum: [GBP]
+                  example: "GBP"
+                dateopened:
+                  type: string
+                  format: date
+                  example: "2023-01-01"
+                accountstatus:
+                  type: string
+                  enum: [Active, Closed, Pending Close, Pending Active]
+                  example: "Active"
+      responses:
+        '201':
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  accountnumber:
+                    type: integer
+                    example: 123456
+                  accounttype:
+                    type: string
+                    example: "Savings"
+                  currency:
+                    type: string
+                    example: "GBP"
+                  dateopened:
+                    type: string
+                    format: date
+                    example: "2023-01-01"
+                  accountstatus:
+                    type: string
+                    example: "Active"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Account number is required"
+
+    get:
+      tags:
+        - Accounts
+      summary: Retrieve all accounts
+      responses:
+        '200':
+          description: A list of accounts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    accountnumber:
+                      type: integer
+                      example: 123456
+                    accounttype:
+                      type: string
+                      example: "Savings"
+                    currency:
+                      type: string
+                      example: "GBP"
+                    dateopened:
+                      type: string
+                      format: date
+                      example: "2023-01-01"
+                    accountstatus:
+                      type: string
+                      example: "Active"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"
+
+  /accounts/{id}:
+    get:
+      tags:
+        - Accounts
+      summary: Retrieve a specific account by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the account to retrieve
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: Account found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  accountnumber:
+                    type: integer
+                    example: 123456
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Account not found"
+
+    put:
+      tags:
+        - Accounts
+      summary: Update an existing account
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the account to update
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                accountnumber:
+                  type: integer
+                  example: 123456
+                accounttype:
+                  type: string
+                  example: "Savings"
+                currency:
+                  type: string
+                  enum: [GBP]
+                  example: "GBP"
+                accountstatus:
+                  type: string
+                  enum: [Active, Closed, Pending Close, Pending Active]
+                  example: "Active"
+      responses:
+        '200':
+          description: Account updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  accountnumber:
+                    type: integer
+                    example: 123456
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Account not found"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Account number is required"
+
+    delete:
+      tags:
+        - Accounts
+      summary: Delete an account
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the account to delete
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Account deleted successfully
+        '404':
+          description: Account not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Account not found"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"

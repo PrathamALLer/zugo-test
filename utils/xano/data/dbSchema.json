@@ -1,0 +1,1834 @@
+[
+  {
+    "id": 363751,
+    "created_at": "2024-07-20 20:28:06+0000",
+    "updated_at": "2024-09-30 15:19:02+0000",
+    "name": "account",
+    "description": "",
+    "docs": "",
+    "guid": "NU_5pSVHwN7s47VItkKUVfTlrBo",
+    "auth": true,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "accountnumber",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "accounttype",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "currency",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "GBP",
+        "required": false,
+        "values": [
+          "GBP"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "dateopened",
+        "type": "date",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "dateclosed",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "accountstatus",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "values": [
+          "Active",
+          "Closed",
+          "Pending Close",
+          "Pending Active"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "lasttransactiondate",
+        "type": "date",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "model_portfolio_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363758
+      },
+      {
+        "name": "risk_profile_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363757
+      },
+      {
+        "name": "Custodied",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "values": [
+          "Y",
+          "N"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "asset_or_liability",
+        "type": "enum",
+        "description": "Identify if the account is an asset or a liability",
+        "nullable": false,
+        "default": "Asset",
+        "required": true,
+        "values": [
+          "Asset",
+          "Liability"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "products_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 366191
+      }
+    ]
+  },
+  {
+    "id": 363765,
+    "created_at": "2024-07-20 20:51:53+0000",
+    "updated_at": "2024-07-20 20:59:42+0000",
+    "name": "account_value",
+    "description": "tables to cpature holdings related to an account",
+    "docs": "",
+    "guid": "rcyV3Q6XOa29qsV8cf6072RZ0uA",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "bookvalue",
+        "type": "decimal",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "account_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363751
+      },
+      {
+        "name": "currency",
+        "type": "enum",
+        "description": "currency the value is in",
+        "nullable": false,
+        "default": "GBP",
+        "required": true,
+        "values": [
+          "GBP"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "iscurrent",
+        "type": "bool",
+        "description": "identify if the valuation is current",
+        "nullable": false,
+        "default": "1",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      }
+    ]
+  },
+  {
+    "id": 363772,
+    "created_at": "2024-07-20 21:09:04+0000",
+    "updated_at": "2024-07-28 13:00:17+0000",
+    "name": "contribution_withdrawals",
+    "description": "contributions and withdrawals",
+    "docs": "",
+    "guid": "eWp2Xe1UVjK49dLyZDbMvwjJwZc",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "person_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363737
+      },
+      {
+        "name": "plan_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363723
+      },
+      {
+        "name": "account_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363751
+      },
+      {
+        "name": "start_date",
+        "type": "date",
+        "description": "start of cashflow",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "end_date",
+        "type": "date",
+        "description": "end of cashflow",
+        "nullable": true,
+        "default": "3000-01-01",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "amount",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "currency",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "GBP",
+        "required": false,
+        "values": [
+          "GBP"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "frequency",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "Month",
+        "required": true,
+        "values": [
+          "One Time",
+          "Month",
+          "Annual",
+          "Quarter"
+        ],
+        "access": "public",
+        "style": "single"
+      }
+    ]
+  },
+  {
+    "id": 363769,
+    "created_at": "2024-07-20 21:02:27+0000",
+    "updated_at": "2024-09-11 11:48:20+0000",
+    "name": "income_expense",
+    "description": "Income and Expenses",
+    "docs": "",
+    "guid": "ntXA80IwrI7vSHcFTTT6oiaHHVA",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "category",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "Salary",
+        "required": true,
+        "values": [
+          "Salary",
+          "Bonus",
+          "Rent",
+          "Mortgage",
+          "Non Essentials",
+          "Property"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "subcategory",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "values": [
+          "Employment",
+          "Property",
+          ""
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "source",
+        "type": "text",
+        "description": "reference of the source of this income",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "bookvalue",
+        "type": "decimal",
+        "description": "value",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "currency",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "values": [
+          "GBP"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "income_or_expense",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "Income",
+        "required": true,
+        "values": [
+          "Income",
+          "Expense"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "SalarySacrifice",
+        "type": "decimal",
+        "description": "Salary Sacrifice",
+        "nullable": true,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "max": "0.6",
+          "min": "0"
+        }
+      },
+      {
+        "name": "ExternalContribution",
+        "type": "decimal",
+        "description": "External Post Tax Pension Contributions form salary as a percent",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "person_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363737
+      }
+    ]
+  },
+  {
+    "id": 363758,
+    "created_at": "2024-07-20 20:39:36+0000",
+    "updated_at": "2024-07-20 20:39:46+0000",
+    "name": "model_portfolio",
+    "description": "risk profiles",
+    "docs": "",
+    "guid": "cPKcjutGz8M58A67AyYeupcNr4Q",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "description": "name of the risk profile",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "description": "risk profile description",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "risk_profile_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363757
+      }
+    ]
+  },
+  {
+    "id": 363737,
+    "created_at": "2024-07-20 20:01:22+0000",
+    "updated_at": "2024-07-20 20:10:43+0000",
+    "name": "person",
+    "description": "",
+    "docs": "",
+    "guid": "vL3nSCn2wh2njnDpYwC6_6NIx6Y",
+    "auth": true,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "firstname",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "lastname",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "middlename",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "dateofbirth",
+        "type": "date",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "gender",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "phonenumber",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "streetaddress",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "city",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "state",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "postalcode",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "country",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "modified_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "profilepictureurl",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "notes",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "category",
+        "type": "enum",
+        "description": "category of person (client/employee)",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "values": [
+          "Client"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "sub_category",
+        "type": "enum",
+        "description": "sub category of advisor",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "values": [
+          ""
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "user_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363722
+      }
+    ]
+  },
+  {
+    "id": 363753,
+    "created_at": "2024-07-20 20:30:20+0000",
+    "updated_at": "2024-07-20 20:32:52+0000",
+    "name": "person_accounts",
+    "description": "person to account relationships",
+    "docs": "",
+    "guid": "k0Xj5NYGeCUNAxDc0CTfJGYXpws",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "person_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363737
+      },
+      {
+        "name": "account_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363751
+      },
+      {
+        "name": "role",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "Owner",
+        "required": true,
+        "values": [
+          "Owner",
+          "Advisor"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "role_percentage",
+        "type": "decimal",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      }
+    ]
+  },
+  {
+    "id": 363748,
+    "created_at": "2024-07-20 20:20:00+0000",
+    "updated_at": "2024-10-02 08:45:29+0000",
+    "name": "person_plan",
+    "description": "person to plan relationship",
+    "docs": "",
+    "guid": "Rv1Y0XKkoYmFqet6NV46SGQWQ68",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "relationship",
+        "type": "enum",
+        "description": "relationship of a person to the plan",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "values": [
+          "Owner",
+          "Adviser",
+          "Other Member"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "plan_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363723
+      },
+      {
+        "name": "person_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363737
+      }
+    ]
+  },
+  {
+    "id": 363723,
+    "created_at": "2024-07-20 19:26:31+0000",
+    "updated_at": "2024-10-02 08:47:21+0000",
+    "name": "plan",
+    "description": "Client Financial Plans",
+    "docs": "",
+    "guid": "1bm5cK3D3WqTj5kxyUWUp0DJxjM",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "updated",
+        "type": "timestamp",
+        "description": "last updated date time",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "plan_name",
+        "type": "text",
+        "description": "name of the plan",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "plan_description",
+        "type": "text",
+        "description": "description of the plan",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "category",
+        "type": "enum",
+        "description": "description of the plan",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "values": [
+          "Discretionary",
+          ""
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "subcategory",
+        "type": "enum",
+        "description": "description of the plan",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "values": [
+          "Sapphire"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "risk_profile_id",
+        "type": "int",
+        "description": "",
+        "nullable": true,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363757
+      },
+      {
+        "name": "model_portfolio_id",
+        "type": "int",
+        "description": "",
+        "nullable": true,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363758
+      },
+      {
+        "name": "Status",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "values": [
+          "Active",
+          "Completed",
+          "Dormant"
+        ],
+        "access": "public",
+        "style": "single"
+      }
+    ]
+  },
+  {
+    "id": 380648,
+    "created_at": "2024-09-17 15:51:08+0000",
+    "updated_at": "2024-09-23 15:59:24+0000",
+    "name": "Product_Tax_Wrapper_Types",
+    "description": "",
+    "docs": "",
+    "guid": "pyajcHYai-lEAfORB_dO_oUcSYA",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "Name",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "Annual_Accumulation__Allowance",
+        "type": "decimal",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Annual_Decumulation_Allowance",
+        "type": "decimal",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Income_Tax_Applicable",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "values": [
+          "Y",
+          "N"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Capital_Gains_Tax_Applicable",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "values": [
+          "Y",
+          "N"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Max_Tax_Free_Withdrawal",
+        "type": "decimal",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Max_Tax_Free_Withdrawal_Percent_Annual",
+        "type": "decimal",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Min_Withdraw_Age",
+        "type": "int",
+        "description": "",
+        "nullable": true,
+        "default": "57",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "MinContributeAge",
+        "type": "int",
+        "description": "MinContributeAge",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "MaxContributionAge",
+        "type": "int",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      }
+    ]
+  },
+  {
+    "id": 366191,
+    "created_at": "2024-07-28 12:29:06+0000",
+    "updated_at": "2024-09-17 17:44:19+0000",
+    "name": "products",
+    "description": "product",
+    "docs": "",
+    "guid": "jalRpLXzRJ3yf6BGnvPNe-r1iA8",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "category",
+        "type": "enum",
+        "description": "category of product ISA/Pension/GIA/Bonds",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "values": [
+          "ISA",
+          "Pension",
+          "GIA",
+          "Real Estate"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "sub_category",
+        "type": "enum",
+        "description": "category of product ISA/Pension/GIA/Bonds",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "values": [
+          "Stocks and Shares ISA",
+          "Cash ISA",
+          "Lifetime ISA",
+          "GIA",
+          "Workplace Pension",
+          "Self Invested Personal Pension",
+          "Real Estate",
+          ""
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "provider",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "ShettyWealth",
+        "required": true,
+        "values": [
+          "Fidelity",
+          "AJ Bell",
+          "Freetrade",
+          "Aviva",
+          "ShettyWealth"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "product_tax_wrapper_categories_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 380648
+      }
+    ]
+  },
+  {
+    "id": 363757,
+    "created_at": "2024-07-20 20:38:24+0000",
+    "updated_at": "2024-07-20 20:44:01+0000",
+    "name": "risk_profile",
+    "description": "risk profiles",
+    "docs": "",
+    "guid": "z_vq-8xE6Oa8oG52k8XYcOBVtDw",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "description": "name of the risk profile",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "description": "risk profile description",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "min_score",
+        "type": "decimal",
+        "description": "score range",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "score",
+        "type": "decimal",
+        "description": "score range",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "max_score",
+        "type": "decimal",
+        "description": "score range",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      }
+    ]
+  },
+  {
+    "id": 380334,
+    "created_at": "2024-09-16 17:04:17+0000",
+    "updated_at": "2024-09-17 16:05:38+0000",
+    "name": "Settings",
+    "description": "Settings",
+    "docs": "",
+    "guid": "O32mV3RmY5uKjUwYDITY9mgIUTc",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "SettingName",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "SettingValue",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "Priority",
+        "type": "int",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "product_tax_wrapper_categories_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 380648
+      }
+    ]
+  },
+  {
+    "id": 379111,
+    "created_at": "2024-09-12 10:06:39+0000",
+    "updated_at": "2024-09-12 10:08:30+0000",
+    "name": "TaxRates",
+    "description": "TaxRates",
+    "docs": "",
+    "guid": "ODTSeYbYcjfag-5FqMrEJrPDh0M",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "Band",
+        "type": "text",
+        "description": "Band",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "Taxable_Income_Min",
+        "type": "decimal",
+        "description": "Taxable_Income",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Taxable_Income_Max",
+        "type": "decimal",
+        "description": "Taxable_Income_Max",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Tax_Rate",
+        "type": "decimal",
+        "description": "Tax_Rate",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "Jurisdiction_Code",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      }
+    ]
+  },
+  {
+    "id": 366192,
+    "created_at": "2024-07-28 12:35:48+0000",
+    "updated_at": "2024-07-28 12:56:37+0000",
+    "name": "transactions",
+    "description": "",
+    "docs": "",
+    "guid": "jfRdGgQjr2mtYnge4SItV9W6VVg",
+    "auth": false,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true
+        }
+      },
+      {
+        "name": "trade_date",
+        "type": "date",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "completed_date",
+        "type": "date",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "account_id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "0",
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "tableref_id": 363751
+      },
+      {
+        "name": "total_amount",
+        "type": "decimal",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "category",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "Invest Cash",
+        "required": true,
+        "values": [
+          "Invest Cash",
+          "Raise Cash"
+        ],
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "trade_currency",
+        "type": "enum",
+        "description": "",
+        "nullable": false,
+        "default": "GBP",
+        "required": true,
+        "values": [
+          "GBP"
+        ],
+        "access": "public",
+        "style": "single"
+      }
+    ]
+  },
+  {
+    "id": 363722,
+    "created_at": "2024-07-20 19:23:26+0000",
+    "updated_at": "2024-07-20 19:45:25+0000",
+    "name": "user",
+    "description": "",
+    "docs": "",
+    "guid": "smAQIgGLtK78WbdUeU8kwcYBbwA",
+    "auth": true,
+    "tag": [],
+    "schema": [
+      {
+        "name": "id",
+        "type": "int",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp",
+        "description": "",
+        "nullable": false,
+        "default": "now",
+        "required": false,
+        "access": "private",
+        "style": "single"
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "description": "",
+        "nullable": false,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single"
+      },
+      {
+        "name": "email",
+        "type": "email",
+        "description": "",
+        "nullable": true,
+        "default": "",
+        "required": true,
+        "access": "public",
+        "style": "single",
+        "validators": {
+          "trim": true,
+          "lower": true
+        }
+      },
+      {
+        "name": "password",
+        "type": "password",
+        "description": "",
+        "nullable": true,
+        "required": true,
+        "access": "internal",
+        "style": "single",
+        "validators": {
+          "min": 8,
+          "minAlpha": 1,
+          "minDigit": 1
+        }
+      },
+      {
+        "name": "google_oauth",
+        "type": "object",
+        "description": "",
+        "nullable": false,
+        "required": false,
+        "access": "public",
+        "style": "single",
+        "children": [
+          {
+            "name": "id",
+            "type": "text",
+            "description": "",
+            "nullable": false,
+            "default": "",
+            "required": false,
+            "access": "public",
+            "style": "single",
+            "validators": {
+              "trim": true
+            }
+          },
+          {
+            "name": "name",
+            "type": "text",
+            "description": "",
+            "nullable": false,
+            "default": "",
+            "required": false,
+            "access": "public",
+            "style": "single",
+            "validators": {
+              "trim": true
+            }
+          },
+          {
+            "name": "email",
+            "type": "email",
+            "description": "",
+            "nullable": false,
+            "default": "",
+            "required": false,
+            "access": "public",
+            "style": "single"
+          }
+        ]
+      }
+    ]
+  }
+]

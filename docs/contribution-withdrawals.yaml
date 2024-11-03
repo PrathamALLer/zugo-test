@@ -1,0 +1,238 @@
+openapi: 3.0.0
+info:
+  title: Contribution Withdrawals API
+  version: 1.0.0
+  description: API for managing contribution withdrawals.
+tags:
+  - name: Contribution Withdrawals
+    description: Operations related to contribution withdrawals
+paths:
+  /contribution-withdrawals:
+    post:
+      tags:
+        - Contribution Withdrawals
+      summary: Create a new contribution withdrawal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                person_id:
+                  type: integer
+                  example: 1
+                plan_id:
+                  type: integer
+                  example: 1
+                account_id:
+                  type: integer
+                  example: 1
+                start_date:
+                  type: string
+                  format: date
+                  example: "2023-01-01"
+                end_date:
+                  type: string
+                  format: date
+                  example: "2023-12-31"
+                amount:
+                  type: string
+                  example: "100.00"
+                currency:
+                  type: string
+                  enum: [GBP]
+                  example: "GBP"
+      responses:
+        '201':
+          description: Contribution withdrawal created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  person_id:
+                    type: integer
+                    example: 1
+                  plan_id:
+                    type: integer
+                    example: 1
+                  account_id:
+                    type: integer
+                    example: 1
+                  start_date:
+                    type: string
+                    format: date
+                    example: "2023-01-01"
+                  end_date:
+                    type: string
+                    format: date
+                    example: "2023-12-31"
+                  amount:
+                    type: string
+                    example: "100.00"
+                  currency:
+                    type: string
+                    example: "GBP"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Person ID is required"
+
+    get:
+      tags:
+        - Contribution Withdrawals
+      summary: Retrieve all contribution withdrawals
+      responses:
+        '200':
+          description: A list of contribution withdrawals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    person_id:
+                      type: integer
+                      example: 1
+                    plan_id:
+                      type: integer
+                      example: 1
+                    account_id:
+                      type: integer
+                      example: 1
+                    start_date:
+                      type: string
+                      format: date
+                      example: "2023-01-01"
+                    end_date:
+                      type: string
+                      format: date
+        '404':
+          description: Model portfolio not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "ModelPortfolio not found"
+
+    put:
+      tags:
+        - Model Portfolios
+      summary: Update a model portfolio by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the model portfolio to update
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: "Aggressive Growth"
+                description:
+                  type: string
+                  example: "A portfolio focused on high growth."
+                risk_profile_id:
+                  type: integer
+                  example: 1
+      responses:
+        '200':
+          description: Model portfolio updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "Aggressive Growth"
+                  description:
+                    type: string
+                    example: "A portfolio focused on high growth."
+                  risk_profile_id:
+                    type: integer
+                    example: 1
+        '404':
+          description: Model portfolio not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "ModelPortfolio not found"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Name is required"
+
+    delete:
+      tags:
+        - Model Portfolios
+      summary: Delete a model portfolio by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the model portfolio to delete
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '204':
+          description: Model portfolio deleted successfully
+        '404':
+          description: Model portfolio not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "ModelPortfolio not found"
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Internal server error"
