@@ -11,7 +11,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:8000/api', // Replace with your server URL
+        url: 'https://zugo-test.onrender.com/api', // Replace with your server URL
       },
     ],
   },
