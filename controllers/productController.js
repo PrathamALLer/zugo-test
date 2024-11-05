@@ -1,5 +1,5 @@
 const { Product } = require('../models');
-const { validateCreateProduct, validateUpdateProduct } = require('../validators/productvalidator');
+const { validateCreateProduct, validateUpdateProduct } = require('../validators/productValidator');
 
 exports.createProduct = async (req, res) => {
   try {
